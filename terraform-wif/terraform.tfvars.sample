@@ -1,0 +1,6 @@
+project_id = "myproject-123"
+
+wif_pool_id = "my-wif-pool"
+
+github_org  = "my-gh-name"
+github_repo = "hashicorp-packer-gcp-with-gha"

@@ -1,0 +1,49 @@
+name: Packer Build
+
+on:
+  push:
+    branches: [main]
+
+env:
+  PRODUCT_VERSION: "1.9.1" # or: "latest"
+  WIF_PROVIDER: "projects/616054123395/locations/global/workloadIdentityPools/gha-pool-demo01/providers/github"
+  WIF_SERVICE_ACCOUNT: "gha-packer-sa@gcp-demos-390500.iam.gserviceaccount.com"
+
+jobs:
+  packer-docker-base:
+    name: Build Docker BASE
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./base-docker
+
+    # https://github.com/google-github-actions/setup-gcloud
+    # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 'Authenticate to Google Cloud'
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+#          workload_identity_provider: 'projects/360959748434/locations/global/workloadIdentityPools/gha-gcp-pool-glen/providers/github-gha'
+#          service_account: 'gha-packer-sa@zoey-215712.iam.gserviceaccount.com'
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: ${{ env.PRODUCT_VERSION }}
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./base_docker.pkr.hcl"
+      - name: Run `packer build`
+        id: build
+        run: "packer build -force -var 'project_id=${{ env.GCP_PROJECT_ID }}' -var-file=variables.pkrvars.hcl ./base_docker.pkr.hcl"
