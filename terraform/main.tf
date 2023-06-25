@@ -33,3 +33,21 @@ module "gh_oidc" {
 }
 
 
+#------------------------------------
+# Firewalls
+#------------------------------------
+resource "google_compute_firewall" "rules" {
+  project     = var.project_id
+  name        = "allow-packer-ssh"
+  network     = "default"
+  description = "Creates firewall rule targeting tagged instances"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges           = ["0.0.0.0/0"]
+  target_service_accounts = ["${google_service_account.packer_sa.email}"]
+  #target_tags             = ["packer"]
+}

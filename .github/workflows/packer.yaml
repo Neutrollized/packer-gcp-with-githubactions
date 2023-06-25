@@ -43,6 +43,9 @@ jobs:
       - name: Run `packer init`
         id: init
         run: "packer init ./base_docker.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./base_docker.pkr.hcl"
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables.pkrvars.hcl ./base_docker.pkr.hcl"
@@ -78,6 +81,9 @@ jobs:
       - name: Run `packer init`
         id: init
         run: "packer init ./consul_base.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./consul_base.pkr.hcl"
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_base.pkrvars.hcl ./consul_base.pkr.hcl"
@@ -114,6 +120,9 @@ jobs:
       - name: Run `packer init`
         id: init
         run: "packer init ./consul_server.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./consul_server.pkr.hcl"
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_server.pkrvars.hcl ./consul_server.pkr.hcl"
@@ -150,6 +159,9 @@ jobs:
       - name: Run `packer init`
         id: init
         run: "packer init ./nomad_client.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./nomad_client.pkr.hcl"
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_client.pkrvars.hcl ./nomad_client.pkr.hcl"
@@ -186,6 +198,9 @@ jobs:
       - name: Run `packer init`
         id: init
         run: "packer init ./nomad_server.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./nomad_server.pkr.hcl"
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_server.pkrvars.hcl ./nomad_server.pkr.hcl"
