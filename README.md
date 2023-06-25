@@ -11,7 +11,7 @@
 ### 0 - Fork this repo
 
 ### 1 - WIF Pool & GitHub Provider
-Terraform code for setting up required GCP service accounts and WIF can be found [here](./terraform-wif)
+Terraform code for setting up required GCP service accounts and WIF can be found [here](./terraform)
 
 ### 2 - Update GitHub Workflow YAML
 You will need to update the `WIF_PROVIDER` and `WIF_SERVICE_ACCOUNT` env vars in the [packer.yaml](.github/workflow/packer.yaml) accordingly for your GCP project and WIF Pool configuration

@@ -3,6 +3,7 @@ name: Packer Build
 on:
   push:
     branches: [main]
+    paths-ignore: ['**/README.md']
 
 env:
   PRODUCT_VERSION: "1.9.1" # or: "latest"
