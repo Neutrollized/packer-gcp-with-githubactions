@@ -5,6 +5,7 @@
 - building Google Cloud VM images using Packer and GitHub Actions
 - authentication handled by [Workload Identity Federation (WIF)](https://cloud.google.com/iam/docs/workload-identity-federation)
 
+[Medium: Getting started with HashiCorp Packer on Google Cloud Platform](https://medium.com/@glen.yu/getting-started-with-hashicorp-packer-on-google-cloud-platform-a36bfeffbfa9)
 
 ## Setup
 
