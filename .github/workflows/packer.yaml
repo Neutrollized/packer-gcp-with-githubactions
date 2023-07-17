@@ -3,12 +3,10 @@ name: Packer Build
 on:
   push:
     branches: [main]
-    paths-ignore: ['**/README.md']
+    paths-ignore: ['**/README.md','**/CHANGELOG.md']
 
 env:
   PRODUCT_VERSION: "1.9.1" # or: "latest"
-  WIF_PROVIDER: "projects/616054123395/locations/global/workloadIdentityPools/gha-pool-demo01/providers/github"
-  WIF_SERVICE_ACCOUNT: "gha-packer-sa@gcp-demos-390500.iam.gserviceaccount.com"
 
 
 jobs:
@@ -33,8 +31,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -71,8 +69,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -87,7 +85,7 @@ jobs:
         run: "packer validate -syntax-only -evaluate-datasources ./consul_base.pkr.hcl"
       - name: Run `packer build`
         id: build
-        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_base.pkrvars.hcl ./consul_base.pkr.hcl"
+        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_base.pkrvars.hcl -var-file=variables.pkrvars.hcl ./consul_base.pkr.hcl"
 
 
   packer-consul-server:
@@ -110,8 +108,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -126,7 +124,7 @@ jobs:
         run: "packer validate -syntax-only -evaluate-datasources ./consul_server.pkr.hcl"
       - name: Run `packer build`
         id: build
-        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_server.pkrvars.hcl ./consul_server.pkr.hcl"
+        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_consul_server.pkrvars.hcl -var-file=variables.pkrvars.hcl ./consul_server.pkr.hcl"
 
 
   packer-nomad-client:
@@ -149,8 +147,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -165,7 +163,7 @@ jobs:
         run: "packer validate -syntax-only -evaluate-datasources ./nomad_client.pkr.hcl"
       - name: Run `packer build`
         id: build
-        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_client.pkrvars.hcl ./nomad_client.pkr.hcl"
+        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_client.pkrvars.hcl -var-file=variables.pkrvars.hcl ./nomad_client.pkr.hcl"
 
 
   packer-nomad-server:
@@ -188,8 +186,8 @@ jobs:
         id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -204,4 +202,4 @@ jobs:
         run: "packer validate -syntax-only -evaluate-datasources ./nomad_server.pkr.hcl"
       - name: Run `packer build`
         id: build
-        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_server.pkrvars.hcl ./nomad_server.pkr.hcl"
+        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_nomad_server.pkrvars.hcl -var-file=variables.pkrvars.hcl ./nomad_server.pkr.hcl"

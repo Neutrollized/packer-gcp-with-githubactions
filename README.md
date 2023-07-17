@@ -17,6 +17,14 @@ Terraform code for setting up required GCP service accounts and WIF can be found
 ### 2 - Update GitHub Workflow YAML
 You will need to update the `WIF_PROVIDER` and `WIF_SERVICE_ACCOUNT` env vars in the [packer.yaml](.github/workflow/packer.yaml) accordingly for your GCP project and WIF Pool configuration
 
+**NOTE** - you can get the `WIF_PROVIDER` with the following `gcloud` command (provider ID = *github* in my example): 
+```console
+gcloud iam workload-identity-pools providers describe ${WIF_PROVIDER_ID} \
+    --location global \
+    --workload-identity-pool ${WIF_POOL_ID} \
+    --format='get(name)'
+```
+
 ### 3 - Push your commit!
 Check the **Actions** tab and watch it go
 
