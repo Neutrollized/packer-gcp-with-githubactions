@@ -11,13 +11,15 @@
 
 ### 0 - Fork this repo
 
+
 ### 1 - WIF Pool & GitHub Provider
 Terraform code for setting up required GCP service accounts and WIF can be found [here](./terraform)
+
 
 ### 2 - Update GitHub Workflow YAML
 You will need to update the `WIF_PROVIDER` and `WIF_SERVICE_ACCOUNT` env vars in the [packer.yaml](.github/workflow/packer.yaml) accordingly for your GCP project and WIF Pool configuration
 
-**NOTE** - you can get the `WIF_PROVIDER` with the following `gcloud` command (provider ID = *github* in my example): 
+#### NOTE - You can get the `WIF_PROVIDER` with the following `gcloud` command (provider ID = *github* in my example): 
 ```console
 gcloud iam workload-identity-pools providers describe ${WIF_PROVIDER_ID} \
     --location global \
@@ -25,11 +27,14 @@ gcloud iam workload-identity-pools providers describe ${WIF_PROVIDER_ID} \
     --format='get(name)'
 ```
 
+#### NOTE - I used GitHub's CLI tool, [`gh`](https://github.com/cli/cli) to [set secrets](https://cli.github.com/manual/gh_secret_set) via command line
+
+
 ### 3 - Push your commit!
 Check the **Actions** tab and watch it go
 
 
-### NOTE - Using Credentials JSON
+#### NOTE - Using Credentials JSON
 While not the recommended method of authenticating to Google Cloud, you can generate a credentials JSON key file and paste its contents into a GitHub repo secret:
 ```
 jobs:
