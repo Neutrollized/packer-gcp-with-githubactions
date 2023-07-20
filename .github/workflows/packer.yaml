@@ -3,10 +3,10 @@ name: Packer Build
 on:
   push:
     branches: [main]
-    paths-ignore: ['**/README.md','**/CHANGELOG.md']
+    paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*']
 
 env:
-  PRODUCT_VERSION: "1.9.1" # or: "latest"
+  PRODUCT_VERSION: "1.9.2" # or: "latest"
 
 
 jobs:
