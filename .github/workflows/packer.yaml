@@ -6,7 +6,7 @@ on:
     paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*']
 
 env:
-  PRODUCT_VERSION: "1.9.2" # or: "latest"
+  PRODUCT_VERSION: "1.9.4" # or: "latest"
 
 
 jobs:

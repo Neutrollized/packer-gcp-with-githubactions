@@ -1,4 +1,12 @@
 # https://www.packer.io/docs/builders/googlecompute
+packer {
+  required_plugins {
+    googlecompute = {
+      source  = "github.com/hashicorp/googlecompute"
+      version = "~> 1"
+    }
+  }
+}
 
 # you need to declare the variables here so that it knows what to look for in the .pkrvars.hcl var file
 variable "project_id" {}
