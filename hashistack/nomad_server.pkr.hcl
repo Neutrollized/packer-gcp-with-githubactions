@@ -73,7 +73,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "nomad/20_services_check.sh"
+    source      = "nomad/20_server_services_check.sh"
     destination = "/tmp/"
   }
 
@@ -92,7 +92,7 @@ build {
       "echo '=============================================='",
       "echo 'SETUP NOMAD SERVER'",
       "echo '=============================================='",
-      "sudo mv /tmp/20_services_check.sh /etc/dynmotd.d/",
+      "sudo mv /tmp/20_server_services_check.sh /etc/dynmotd.d/20_services_check.sh",
       "sudo mv /tmp/nomad.service /etc/systemd/system/",
       "sudo systemctl daemon-reload",
       "sudo mv /tmp/server.hcl /etc/nomad.d/",

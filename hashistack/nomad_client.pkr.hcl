@@ -125,6 +125,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "nomad/20_client_services_check.sh"
+    destination = "/tmp/"
+  }
+
+  provisioner "file" {
     source      = "nomad/nomad.service"
     destination = "/tmp/"
   }
@@ -139,6 +144,7 @@ build {
       "echo '=============================================='",
       "echo 'SETUP NOMAD CLIENT'",
       "echo '=============================================='",
+      "sudo mv /tmp/20_client_services_check.sh /etc/dynmotd.d/20_services_check.sh",
       "sudo mv /tmp/nomad.service /etc/systemd/system/",
       "sudo systemctl daemon-reload",
       "sudo mv /tmp/client.hcl /etc/nomad.d/",
