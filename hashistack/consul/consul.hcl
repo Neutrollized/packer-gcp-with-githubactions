@@ -1,14 +1,17 @@
 # /etc/consul.d/consul.hcl
 log_level = "INFO"
 
-datacenter =  "{CLOUD}-{ENV}-{REGION}"
+datacenter = "{CLOUD}-{ENV}-{REGION}"
 
 data_dir = "/opt/consul"
+
+bind_addr = "{PRIVATE_IPV4}"
 
 # https://www.consul.io/docs/agent/encryption.html
 encrypt = "{GOSSIP_KEY}"
 
-retry_join = ["provider=aws tag_key=role tag_value={CONSUL_SERVER_TAG}"]
+# https://developer.hashicorp.com/consul/docs/install/cloud-auto-join#google-compute-engine
+retry_join = ["provider=gce tag_value={CONSUL_SERVER_TAG}"]
 
 # https://www.consul.io/docs/install/performance.html
 performance {

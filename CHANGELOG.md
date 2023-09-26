@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2023-09-25
+### Added 
+- Added `bind_addr` and `acl` stanzas to Consul `consul.hcl` config
+- Added `consul` stanza to Nomad `client.hcl` config
+### Fixed
+- Updated `consul.hcl` config for GCP auto-join
+
 ## [0.3.1] - 2023-09-22
 ### Added
 - Separate "services check" scripts for Nomad servers and clients

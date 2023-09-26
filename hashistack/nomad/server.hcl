@@ -2,14 +2,14 @@
 
 advertise {
   http = "{PRIVATE_IPV4}"
-  rpc = "{PRIVATE_IPV4}"
+  rpc  = "{PRIVATE_IPV4}"
   serf = "{PRIVATE_IPV4}"
 }
 
 # default region is "global"
 # Nomad will identify your server nodes as HOSTNAME.region
 datacenter = "{CLOUD}-{ENV}"
-region = "{REGION}"
+region     = "{REGION}"
 
 # Increase log verbosity
 log_level = "INFO"
@@ -36,9 +36,13 @@ server {
   job_gc_interval = "72h"
 }
 
-## https://www.nomadproject.io/docs/configuration/vault.html
+client {
+  enabled = false
+}
+
+# https://www.nomadproject.io/docs/configuration/vault.html
 #vault {
-#  enabled     = true
-#
-#  address     = "{VAULT_ADDR}"
+#  enabled = true
+#  address = "{VAULT_ADDR}"
+#  token   = "{VAULT_TOKEN}"
 #}

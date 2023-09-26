@@ -12,6 +12,13 @@ ui_config {
   enabled = true
 }
 
+# https://developer.hashicorp.com/consul/docs/security/acl
+#acl = {
+#  enabled = true
+#  default_policy = "deny"
+#  enable_token_persistence = true
+#}
+
 # https://learn.hashicorp.com/consul/security-networking/certificates
 # https://learn.hashicorp.com/consul/day-2-agent-authentication/update-certificates
 #verify_incoming = true
