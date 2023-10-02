@@ -1,15 +1,15 @@
 # /etc/nomad.d/server.hcl
 
+# default region is "global"
+# Nomad will identify your server nodes as HOSTNAME.region
+datacenter = "{DATACENTER}"
+region     = "{REGION}"
+
 advertise {
   http = "{PRIVATE_IPV4}"
   rpc  = "{PRIVATE_IPV4}"
   serf = "{PRIVATE_IPV4}"
 }
-
-# default region is "global"
-# Nomad will identify your server nodes as HOSTNAME.region
-datacenter = "{CLOUD}-{ENV}"
-region     = "{REGION}"
 
 # Increase log verbosity
 log_level = "INFO"
@@ -39,6 +39,18 @@ server {
 client {
   enabled = false
 }
+
+#tls {
+#  http = true
+#  rpc  = true
+#
+#  ca_file   = "/etc/ssl/certs/nomad-agent-ca.pem"
+#  cert_file = "/etc/nomad.d/ssl/{REGION}-server-nomad.pem"
+#  key_file  = "/etc/nomad.d/ssl/{REGION}-server-nomad-key.pem"
+#
+#  verify_server_hostname = true
+#  verify_https_client    = false
+#}
 
 # https://www.nomadproject.io/docs/configuration/vault.html
 #vault {

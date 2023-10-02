@@ -1,7 +1,7 @@
 # /etc/consul.d/consul.hcl
 log_level = "INFO"
 
-datacenter = "{CLOUD}-{ENV}-{REGION}"
+datacenter = "{DATACENTER}"
 
 data_dir = "/opt/consul"
 

@@ -21,12 +21,22 @@ ui_config {
 
 # https://learn.hashicorp.com/consul/security-networking/certificates
 # https://learn.hashicorp.com/consul/day-2-agent-authentication/update-certificates
-#verify_incoming = true
-#verify_outgoing = true
-#verify_server_hostname = true
-#ca_file = "/etc/ssl/certs/consul-agent-ca.pem"
-#cert_file = "/etc/consul.d/ssl/[DC NAME]-server-consul-0.pem"
-#key_file = "/etc/consul.d/ssl/[DC NAME]-server-consul-0-key.pem"
+# https://developer.hashicorp.com/consul/docs/security/encryption
+#tls {
+#  defaults {
+#    verify_incoming = true
+#    verify_outgoing = true
+#
+#    ca_file   = "/etc/ssl/certs/consul-agent-ca.pem"
+#    cert_file = "/etc/consul.d/ssl/{DATACENTER}-server-consul-0.pem"
+#    key_file  = "/etc/consul.d/ssl/{DATACENTER}-server-consul-0-key.pem"
+#  }
+#
+#  internal_rpc {
+#    verify_server_hostname = true
+#  }
+#}
+
 #auto_encrypt {
 #  allow_tls = true
 #}
