@@ -85,7 +85,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "consul/consul.hcl"
+    source      = "consul/client.hcl"
     destination = "/tmp/"
   }
 
