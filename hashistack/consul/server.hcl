@@ -12,6 +12,11 @@ ui_config {
   enabled = true
 }
 
+# https://developer.hashicorp.com/consul/docs/agent/config/config-files#primary_datacenter
+#primary_datacenter = "{PRIMARY_DC}"
+# https://developer.hashicorp.com/consul/tutorials/networking/federation-gossip-wan#persist-join-with-retry-join
+#retry_join_wan = ["{DC2_SERVER1}", "{DC2_SERVER2}"]
+
 # https://developer.hashicorp.com/consul/docs/security/acl
 #acl = {
 #  enabled = true

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2023-10-02
+### Added
+- `primary_datacenter` and `retry_join_wan` to Consul server config
+### Fixed
+- Added missing `consul/client.hcl` to Nomad client image
+
 ## [0.5.0] - 2023-10-02
 ### Added
 - `client.hcl` for Consul clients [Auto-encryption](https://developer.hashicorp.com/consul/tutorials/security/tls-encryption-secure#client-certificate-distribution) TLS config

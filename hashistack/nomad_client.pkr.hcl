@@ -84,6 +84,11 @@ build {
     destination = "/tmp/"
   }
 
+  provisioner "file" {
+    source      = "consul/consul.hcl"
+    destination = "/tmp/"
+  }
+
   provisioner "shell" {
     inline = [
       "echo '=============================================='",
@@ -92,6 +97,7 @@ build {
       "sudo mv /tmp/consul.service /etc/systemd/system/",
       "sudo systemctl daemon-reload",
       "sudo mv /tmp/consul.hcl /etc/consul.d/",
+      "sudo mv /tmp/client.hcl /etc/consul.d/",
       "sudo chown -R consul:consul /etc/consul.d",
       "sudo chown -R consul:consul /opt/consul",
       "sudo chown -R consul:consul /var/log/consul",
