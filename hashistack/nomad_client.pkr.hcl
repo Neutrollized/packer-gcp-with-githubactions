@@ -55,7 +55,7 @@ build {
       "echo '=============================================='",
       "sudo addgroup --system consul",
       "sudo adduser --system --ingroup consul consul",
-      "sudo mkdir -p /etc/consul.d",
+      "sudo mkdir -p /etc/consul.d/ssl",
       "sudo mkdir -p /opt/consul",
       "sudo mkdir -p /var/log/consul"
     ]
@@ -101,6 +101,7 @@ build {
       "sudo chown -R consul:consul /etc/consul.d",
       "sudo chown -R consul:consul /opt/consul",
       "sudo chown -R consul:consul /var/log/consul",
+      "sudo chmod 750 /etc/consul.d/ssl",
       "sudo systemctl disable consul.service"
     ]
   }
@@ -159,6 +160,25 @@ build {
       "sudo chmod 750 /etc/nomad.d/ssl",
       "sudo systemctl disable nomad.service"
     ]
+  }
+
+  provisioner "file" {
+    source      = "nomad/bridge.conf"
+    destination = "/tmp/"
+  }
+
+  # https://developer.hashicorp.com/nomad/docs/install#post-installation-steps
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'INSTALL CNI PLUGINS'",
+      "echo '=============================================='",
+      "curl -L -o /tmp/cni-plugins.tgz \"https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-linux-$( [ $(uname -m) = aarch64 ] && echo arm64 || echo amd64)\"-v1.0.0.tgz",
+      "sudo mkdir -p /opt/cni/bin",
+      "sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins.tgz",
+      "sudo mv /tmp/bridge.conf /etc/sysctl.d/"
+    ]
+    max_retries = 3
   }
 
   provisioner "shell" {

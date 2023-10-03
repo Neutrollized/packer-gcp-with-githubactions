@@ -17,3 +17,7 @@
 #auto_encrypt {
 #  tls = true
 #}
+
+connect {
+  enabled = false
+}
