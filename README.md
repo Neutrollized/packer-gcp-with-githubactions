@@ -51,3 +51,13 @@ jobs:
 
       [...]
 ```
+
+
+## Run Locally
+If you wish to run this locally without using GitHub Actions, you can do the following:
+
+```console
+PKR_VAR_access_token='xxxxxxxxxxxxx' packer build -var 'project_id=myproject-123' -var-file=variables.pkrvars.hcl base_docker.pkr.hcl`
+```
+
+**NOTE**: obtain access_token with `gcloud auth print-access-token`
