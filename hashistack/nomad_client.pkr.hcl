@@ -16,6 +16,7 @@ variable "source_image_family" {}
 variable "image_family" {}
 variable "consul_version" {}
 variable "nomad_version" {}
+variable "java_package" {}
 
 
 locals {
@@ -47,6 +48,18 @@ source "googlecompute" "nomad-client" {
 
 build {
   sources = ["sources.googlecompute.nomad-client"]
+
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'APT INSTALL JAVA RUNTIME'",
+      "echo '=============================================='",
+      "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
+      "sudo apt-get update",
+      "sudo apt-get -y install --no-install-recommends ${var.java_package}",
+      "sudo apt-get -y autoremove"
+    ]
+  }
 
   provisioner "shell" {
     inline = [

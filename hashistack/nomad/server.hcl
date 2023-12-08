@@ -20,11 +20,18 @@ data_dir = "/opt/nomad"
 # https://www.nomadproject.io/guides/security/acl.html#enable-acls-on-nomad-servers
 acl {
   enabled = true
+
+  # For multi-region federation setups
+  # From primary DC, create global management token to be passed here
+  #replication_token = ""
 }
 
 # Enable the server
 server {
   enabled = true
+
+  # For multi-region federation setups
+  #authoritative_region = {PRIMARY_DC_REGION}
 
   # Self-elect, should be 3 or 5 for production
   bootstrap_expect = {SERVER_COUNT}
@@ -52,7 +59,7 @@ client {
 #  verify_https_client    = false
 #}
 
-# https://www.nomadproject.io/docs/configuration/vault.html
+# https://developer.hashicorp.com/nomad/docs/integrations/vault-integration#authentication-without-workload-identity-legacy
 #vault {
 #  enabled = true
 #  address = "{VAULT_ADDR}"
