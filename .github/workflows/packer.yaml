@@ -6,7 +6,7 @@ on:
     paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*']
 
 env:
-  PRODUCT_VERSION: "1.9.4" # or: "latest"
+  PRODUCT_VERSION: "1.9.5" # or: "latest"
 
 
 jobs:
@@ -48,6 +48,44 @@ jobs:
       - name: Run `packer build`
         id: build
         run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables.pkrvars.hcl ./base_docker.pkr.hcl"
+
+
+  packer-vault-base:
+    name: Build Vault BASE
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./hashistack
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 'Authenticate to Google Cloud'
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: ${{ env.PRODUCT_VERSION }}
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./vault_base.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -evaluate-datasources ./vault_base.pkr.hcl"
+      - name: Run `packer build`
+        id: build
+        run: "packer build -force -var 'project_id=${{ vars.GCP_PROJECT_ID }}' -var-file=variables_vault_base.pkrvars.hcl -var-file=variables.pkrvars.hcl ./vault_base.pkr.hcl"
 
 
   packer-consul-base:

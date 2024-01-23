@@ -1,0 +1,54 @@
+vault {
+  address = "http://{VAULT_SERVER_IP}:8200"
+  retry {
+    num_retries = 3
+  }
+}
+
+# https://developer.hashicorp.com/vault/docs/agent-and-proxy/autoauth
+auto_auth {
+  # https://developer.hashicorp.com/vault/docs/agent-and-proxy/autoauth/methods/approle
+  method {
+    type = "approle" 
+
+    config = {
+      role_id_file_path = "/path/to/file/containing/role-id"
+      secret_id_file_path = "/path/to/file/containing/secret-id"
+      remove_secret_id_file_after_reading = false
+    }
+  }
+
+  # https://developer.hashicorp.com/vault/docs/agent-and-proxy/autoauth/sinks
+  sink {
+    type = "file"
+    mount_path = "approle"	# auth/[mount_path]/role/[role_name]
+
+    config = {
+      path = "/path/to/save/vault-token-via-agent"
+      mode = 0644
+    }
+  }
+}
+
+# https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/apiproxy
+api_proxy {
+  use_auto_auth_token = "force"
+  enforce_consistency = "always"
+}
+
+listener "tcp" {
+  address = "127.0.0.1:8100"
+  tls_disable = true
+}
+
+# https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/caching
+cache {
+  use_auth_auth_token = true
+}
+
+# https://developer.hashicorp.com/vault/docs/agent-and-proxy/agent/template
+template {
+  source = "/path/to/secrets/template.ctmpl" 
+  destination = "/path/to/rendered/secret.txt"
+  error_on_missing_key = true
+}

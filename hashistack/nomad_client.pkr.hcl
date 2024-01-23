@@ -198,6 +198,7 @@ build {
     expect_disconnect = "true"
     inline = [
       "which docker",
+      "which java",
       "which consul",
       "which nomad",
       "echo '=============================================='",

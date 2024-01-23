@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2024-01-23
+### Added
+- Vault base image, version `1.15.4`
+### Changed
+- Updated Packer version from `1.9.4` to `1.9.5`
+- Updated Consul version from `1.17.0` to `1.17.2`
+- Updated Nomad version from `1.7.0` to `1.7.3`
+
 ## [0.7.0] - 2023-12-07
 ### Added
 - Variable `java_package` (default: `openjdk-17-jre-headless` as the Ubuntu Java runtime package name to be installed on Nomad clients
@@ -11,8 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated Consul version from `1.16.2` to `1.17.0`
 - Updated Nomad version from `1.6.2` to `1.7.0`
-
 - CNI Plugins for Nomad clients as per [post-installation steps](https://developer.hashicorp.com/nomad/docs/install#post-installation-steps)
+
 ## [0.6.0] - 2023-10-05
 ### Added
 - CNI Plugins for Nomad clients as per [post-installation steps](https://developer.hashicorp.com/nomad/docs/install#post-installation-steps)

@@ -1,0 +1,34 @@
+ui            = true
+api_addr      = "http://{PRIVATE_IPV4}:8200"
+cluster_addr  = "http://{PRIVATE_IPV4}:8201"
+disable_mlock = true
+
+storage "raft" {
+  path    = "/opt/vault/data"
+  node_id = "raft_node_{NODE_NUM}"
+}
+
+listener "tcp" {
+  address     = "127.0.0.1:8200"
+  tls_disable = true
+}
+
+listener "tcp" {
+  address         = "{PRIVATE_IPV4}:8200"
+  cluster_address = "{PRIVATE_IPV4}:8201"
+  tls_disable     = true
+#  tls_cert_file   = "/opt/vault.d/tls/tls.crt"
+#  tls_key_file    = "/opt/vault.d/tls/tls.key"
+}
+
+# https://developer.hashicorp.com/vault/docs/secrets/transit
+#seal "transit" {
+#  address = "http://${AUTOUNSEAL_VAULT_IP}:8200"
+#  tls_skip_verify = true
+#  disable_renewal = false
+#  token = "${TOKEN}"
+#
+#  # [mount_path]/keys/[keyname_name]
+#  mount_path = "transit/"
+#  key_name = "autounseal"
+#}
