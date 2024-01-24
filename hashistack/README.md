@@ -38,7 +38,7 @@ consul:
 
 
 ## Vault image
-The reason I called the image a "base" image and not server is because I also use this image as a Vault agent when I'm studying for my [Vault Operations Professional](https://www.hashicorp.com/certification/vault-operations-professional) cert (and I use my [serverless Vault](https://github.com/Neutrollized/hashicorp-vault-with-cloud-run) as the Vault server.
+The reason I called the image a "base" image and not server is because I also use this image as a Vault agent when I'm studying for my [Vault Operations Professional](https://www.hashicorp.com/certification/vault-operations-professional) cert (and I use my [serverless Vault](https://github.com/Neutrollized/hashicorp-vault-with-cloud-run) as the Vault server).
 
 ### NOTE
 - After you provision your server make a copy of the `vault_server.hcl.sample` or `vault_agent.hcl.sample` config (whichever applies in your case) and rename it as `vault.hcl` as that's the file name the `vault.service` file is expecting.
