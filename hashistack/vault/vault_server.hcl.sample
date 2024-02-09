@@ -17,8 +17,8 @@ listener "tcp" {
   address         = "{PRIVATE_IPV4}:8200"
   cluster_address = "{PRIVATE_IPV4}:8201"
   tls_disable     = true
-#  tls_cert_file   = "/opt/vault.d/tls/tls.crt"
-#  tls_key_file    = "/opt/vault.d/tls/tls.key"
+#  tls_cert_file   = "/etc/vault.d/tls/vault.crt"
+#  tls_key_file    = "/etc/vault.d/tls/vault.key"
 }
 
 # https://developer.hashicorp.com/vault/docs/secrets/transit

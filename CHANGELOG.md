@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.1] - 2024-02-08
+### Changed
+- Updated Vault version from `1.15.4` to `1.15.5`
+- Updated TLS cert & key file path and filename in `hashistack/vault/vault_server.hcl.sample`
+
 ## [0.8.0] - 2024-01-23
 ### Added
 - Vault base image, version `1.15.4`
