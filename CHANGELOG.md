@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## [0.9.0] - 2024-03-31
+### Changed
+- Updated `actions/checkout` from `v3` to `v4` (Node.js 16 actions are deprecated)
+- Updated `google-github-actions/auth` from `v1` to `v2` (Node.js 16 actions are deprecated)
+- Updated Consul version from `1.17.2` to `1.18.1`
+- Updated Nomad version from `1.7.3` to `1.7.6`
+- Updated Vault version from `1.15.5` to `1.16.0`
+
 ## [0.8.1] - 2024-02-08
 ### Changed
 - Updated Vault version from `1.15.4` to `1.15.5`
