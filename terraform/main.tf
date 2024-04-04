@@ -40,14 +40,16 @@ resource "google_project_iam_member" "packer_sa_iam_member" {
 
 #-------------------------------------
 # Workload Identity Federation 
+# https://registry.terraform.io/modules/terraform-google-modules/github-actions-runners/google/latest/submodules/gh-oidc
 #-------------------------------------
 module "gh_oidc" {
   source  = "terraform-google-modules/github-actions-runners/google//modules/gh-oidc"
-  version = "3.1.1"
+  version = "3.1.2"
 
-  project_id  = var.project_id
-  pool_id     = var.wif_pool_id
-  provider_id = "github"
+  project_id          = var.project_id
+  pool_id             = var.wif_pool_id
+  provider_id         = "github"
+  attribute_condition = "assertion.repository_owner=='${var.github_org}'"
   sa_mapping = {
     "packer-sa" = {
       sa_name   = google_service_account.packer_sa.id

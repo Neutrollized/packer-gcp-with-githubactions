@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.10.0] - 2024-04-03
+### Added
+- `attribute_condition = "assertion.repository_owner=='${var.github_org}'"` to Workload Identity Pool as per [recommended security practices](https://cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines#conditions)
+### Changed
+- Updated `gh_oidc` Terraform module version from `3.1.1` to `3.1.2`
+
+module "gh_oidc" {
+  source  = "terraform-google-modules/github-actions-runners/google//modules/gh-oidc"
+  version = "3.1.2"
+
 ## [0.9.0] - 2024-03-31
 ### Changed
 - Updated `actions/checkout` from `v3` to `v4` (Node.js 16 actions are deprecated)
