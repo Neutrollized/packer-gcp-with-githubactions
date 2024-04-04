@@ -11,10 +11,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated `gh_oidc` Terraform module version from `3.1.1` to `3.1.2`
 
-module "gh_oidc" {
-  source  = "terraform-google-modules/github-actions-runners/google//modules/gh-oidc"
-  version = "3.1.2"
-
 ## [0.9.0] - 2024-03-31
 ### Changed
 - Updated `actions/checkout` from `v3` to `v4` (Node.js 16 actions are deprecated)
