@@ -201,7 +201,7 @@ build {
       "docker --version",
       "echo ''",
       "which java",
-      "java",
+      "java --version",
       "echo ''",
       "which consul",
       "consul --version",
