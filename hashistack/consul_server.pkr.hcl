@@ -72,6 +72,7 @@ build {
     expect_disconnect = "true"
     inline = [
       "which consul",
+      "consul --version",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

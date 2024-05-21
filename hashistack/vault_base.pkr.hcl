@@ -146,6 +146,7 @@ build {
     expect_disconnect = "true"
     inline = [
       "which vault",
+      "vault --version",
       "sudo apt-get clean",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",

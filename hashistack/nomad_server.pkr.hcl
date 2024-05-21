@@ -107,7 +107,9 @@ build {
     expect_disconnect = "true"
     inline = [
       "which consul",
+      "consul --version",
       "which nomad",
+      "nomad --version",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

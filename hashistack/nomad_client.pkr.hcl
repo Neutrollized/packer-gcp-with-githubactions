@@ -198,9 +198,15 @@ build {
     expect_disconnect = "true"
     inline = [
       "which docker",
+      "docker --version",
+      "echo ''",
       "which java",
+      "java",
+      "echo ''",
       "which consul",
+      "consul --version",
       "which nomad",
+      "nomad --version",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

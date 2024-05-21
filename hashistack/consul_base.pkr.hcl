@@ -139,6 +139,7 @@ build {
     expect_disconnect = "true"
     inline = [
       "which consul",
+      "consul --version",
       "sudo apt-get clean",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",

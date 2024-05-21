@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.10.1] - 2024-05-20
+### Added
+- Packer build outputs installed tooling version
+### Changed
+- Updated Consul version from `1.18.1` to `1.18.2`
+- Updated Nomad version from `1.7.6` to `1.7.7`
+- Updated Vault version from `1.16.0` to `1.16.2`
+
 ## [0.10.0] - 2024-04-03
 ### Added
 - `attribute_condition = "assertion.repository_owner=='${var.github_org}'"` to Workload Identity Pool as per [recommended security practices](https://cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines#conditions)
