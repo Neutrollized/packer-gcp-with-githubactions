@@ -80,7 +80,7 @@ build {
       "echo 'DOWNLOAD CONSUL'",
       "echo '=============================================='",
       "wget https://releases.hashicorp.com/consul/${var.consul_version}/consul_${var.consul_version}_linux_${var.arch}.zip",
-      "unzip consul_${var.consul_version}_linux_${var.arch}.zip",
+      "unzip -o consul_${var.consul_version}_linux_${var.arch}.zip",
       "sudo mv consul /usr/local/bin/",
       "rm consul_${var.consul_version}_linux_${var.arch}.zip"
     ]
@@ -137,7 +137,7 @@ build {
       "echo 'DOWNLOAD NOMAD'",
       "echo '=============================================='",
       "wget https://releases.hashicorp.com/nomad/${var.nomad_version}/nomad_${var.nomad_version}_linux_${var.arch}.zip",
-      "unzip nomad_${var.nomad_version}_linux_${var.arch}.zip",
+      "unzip -o nomad_${var.nomad_version}_linux_${var.arch}.zip",
       "sudo mv nomad /usr/local/bin/",
       "rm nomad_${var.nomad_version}_linux_${var.arch}.zip"
     ]

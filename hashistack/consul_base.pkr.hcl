@@ -96,7 +96,7 @@ build {
       "echo 'DOWNLOAD CONSUL'",
       "echo '=============================================='",
       "wget https://releases.hashicorp.com/consul/${var.consul_version}/consul_${var.consul_version}_linux_${var.arch}.zip",
-      "unzip consul_${var.consul_version}_linux_${var.arch}.zip",
+      "unzip -o consul_${var.consul_version}_linux_${var.arch}.zip",
       "sudo mv consul /usr/local/bin/",
       "rm consul_${var.consul_version}_linux_${var.arch}.zip"
     ]

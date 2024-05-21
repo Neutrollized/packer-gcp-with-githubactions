@@ -68,6 +68,8 @@ build {
   provisioner "file" {
     source      = "vault/20_services_check.sh"
     destination = "/tmp/"
+    pause_before = "10s"
+    max_retries = 3
   }
 
   provisioner "shell" {
@@ -80,7 +82,7 @@ build {
       "cd ~ && rm -Rf ./dynmotd/",
       "sudo mv /tmp/20_services_check.sh /etc/dynmotd.d/"
     ]
-    pause_before = "10s"
+    max_retries = 3
   }
 
   provisioner "shell" {
@@ -102,7 +104,7 @@ build {
       "echo 'DOWNLOAD VAULT'",
       "echo '=============================================='",
       "wget https://releases.hashicorp.com/vault/${var.vault_version}/vault_${var.vault_version}_linux_${var.arch}.zip",
-      "unzip vault_${var.vault_version}_linux_${var.arch}.zip",
+      "unzip -o vault_${var.vault_version}_linux_${var.arch}.zip",
       "sudo mv vault /usr/local/bin/",
       "rm vault_${var.vault_version}_linux_${var.arch}.zip"
     ]

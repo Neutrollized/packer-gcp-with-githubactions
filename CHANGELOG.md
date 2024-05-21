@@ -9,9 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Packer build outputs installed tooling version
 ### Changed
+- `unzip` run with `-o` (overwrite without prompting) option
 - Updated Consul version from `1.18.1` to `1.18.2`
 - Updated Nomad version from `1.7.6` to `1.7.7`
 - Updated Vault version from `1.16.0` to `1.16.2`
+### Fixed
+- Added/moved `pause_before` and `max_retries` to add stability to Vault build
 
 ## [0.10.0] - 2024-04-03
 ### Added
