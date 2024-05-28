@@ -17,6 +17,7 @@ variable "image_family" {}
 variable "consul_version" {}
 variable "nomad_version" {}
 variable "java_package" {}
+variable "google_fluentd_version" {}
 
 
 locals {
@@ -190,6 +191,22 @@ build {
       "sudo mkdir -p /opt/cni/bin",
       "sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins.tgz",
       "sudo mv /tmp/bridge.conf /etc/sysctl.d/"
+    ]
+    max_retries = 3
+  }
+
+  # additional installs for running Tetragon
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'INSTALL LOGGING & TETRAGON PRE-REQS'",
+      "echo '=============================================='",
+      "curl -L -o /tmp/add-logging-agent-repo.sh \"https://dl.google.com/cloudagents/add-logging-agent-repo.sh\"",
+      "sudo bash /tmp/add-logging-agent-repo.sh --also-install --version=${var.google_fluentd_version}",
+      "sudo mkdir -p /var/log/tetragon",
+      "echo 'export no_proxy=169.254.169.254' | sudo tee -a /etc/default/google-fluentd",
+      "sudo systemctl disable google-fluentd.service",
+      "sudo rm /tmp/add-logging-agent-repo.sh"
     ]
     max_retries = 3
   }

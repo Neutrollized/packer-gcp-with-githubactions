@@ -28,6 +28,26 @@ client {
 
   # using Consul service discovery to find Nomad server
   servers = ["nomad.service.consul:4647"]
+
+  # BTF (BPF Type Format) required for running Tetragon on Nomad
+  # https://developer.hashicorp.com/nomad/docs/configuration/client#host_volume-block
+  host_volume "kernel-btf" {
+    path      = "/sys/kernel/btf/vmlinux"
+    read_only = true
+  }
+
+  # Tetragon JSON log path
+  host_volume "tetragon-logs" {
+    path      = "/var/log/tetragon/"
+    read_only = false
+  }
+}
+
+# https://developer.hashicorp.com/nomad/tutorials/stateful-workloads/stateful-workloads-csi-volumes?in=nomad%2Fstateful-workloads#enable-privileged-docker-jobs
+plugin "docker" {
+  config {
+    allow_privileged = {DOCKER_ALLOW_PRIVILEGED_JOBS}
+  }
 }
 
 #tls {

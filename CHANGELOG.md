@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.11.0] - 2024-05-28
+### Added
+- Nomad client config for [enabling privileged Docker jobs](https://developer.hashicorp.com/nomad/tutorials/stateful-workloads/stateful-workloads-csi-volumes?in=nomad%2Fstateful-workloads#enable-privileged-docker-jobs) 
+- [Host volume block](https://developer.hashicorp.com/nomad/docs/configuration/client#host_volume-block) in Nomad client config (required to use Tetragon)
+- Packer variable, `google_fluentd_version`
+- Installing logging & Tetragon pre-requisites on Nomad client
+
 ## [0.10.1] - 2024-05-20
 ### Added
 - Packer build outputs installed tooling version
