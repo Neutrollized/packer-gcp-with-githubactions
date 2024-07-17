@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.11.1] - 2024-07-17
+### Changed
+- Updated Consul version from `1.18.2` to `1.19.1`
+- Updated Nomad version from `1.7.7` to `1.8.2`
+- Updated Vault version from `1.16.2` to `1.17.2`
+
 ## [0.11.0] - 2024-05-28
 ### Added
 - Nomad client config for [enabling privileged Docker jobs](https://developer.hashicorp.com/nomad/tutorials/stateful-workloads/stateful-workloads-csi-volumes?in=nomad%2Fstateful-workloads#enable-privileged-docker-jobs) 
