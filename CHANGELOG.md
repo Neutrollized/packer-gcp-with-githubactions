@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [0.11.2] - 2024-09-30
+### Changed
+- Updated Consul version from `1.19.1` to `1.19.2`
+- Updated Nomad version from `1.8.2` to `1.8.4`
+- Updated Vault version from `1.17.2` to `1.17.6`
+
 ## [0.11.1] - 2024-07-17
 ### Changed
 - Updated Consul version from `1.18.2` to `1.19.1`
