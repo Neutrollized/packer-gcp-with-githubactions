@@ -17,7 +17,6 @@ variable "image_family" {}
 variable "consul_version" {}
 variable "nomad_version" {}
 variable "java_package" {}
-variable "google_fluentd_version" {}
 
 
 locals {
@@ -48,6 +47,24 @@ source "googlecompute" "nomad-client" {
 }
 
 build {
+  hcp_packer_registry {
+    bucket_name = "gcp-gce-images-nomad-client"
+    description = "Base Debian (w/Docker) image with Nomad (client config), Consul, and Java installed"
+
+    bucket_labels = {
+      "os"             = "Debian",
+      "os-version"     = "Bookworm 12",
+      "consul-version" = var.consul_version,
+      "nomad-version"  = var.nomad_version,
+      "java-package"   = var.java_package,
+    }
+
+    build_labels = {
+      "build-time"   = timestamp()
+      "build-source" = basename(path.cwd)
+    }
+  }
+
   sources = ["sources.googlecompute.nomad-client"]
 
   provisioner "shell" {
@@ -200,15 +217,16 @@ build {
     inline = [
       "echo '=============================================='",
       "echo 'INSTALL LOGGING & TETRAGON PRE-REQS'",
+      "echo 'https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/installation#optional-tasks'",
       "echo '=============================================='",
-      "curl -L -o /tmp/add-logging-agent-repo.sh \"https://dl.google.com/cloudagents/add-logging-agent-repo.sh\"",
-      "sudo bash /tmp/add-logging-agent-repo.sh --also-install --version=${var.google_fluentd_version}",
+      "curl -L -o /tmp/add-google-cloud-ops-agent-repo.sh \"https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh\"",
+      "sudo bash /tmp/add-google-cloud-ops-agent-repo.sh --also-install",
       "sudo mkdir -p /var/log/tetragon",
-      "echo 'export no_proxy=169.254.169.254' | sudo tee -a /etc/default/google-fluentd",
-      "sudo systemctl disable google-fluentd.service",
-      "sudo rm /tmp/add-logging-agent-repo.sh"
+      "echo 'DefaultEnvironment=\"NO_PROXY=http://metadata.google.internal\"  # Skip proxy for the local Metadata Server.' | sudo tee -a /etc/systemd/system.conf",
+      "sudo systemctl disable google-cloud-ops-agent.service",
+      "sudo rm /tmp/add-google-cloud-ops-agent-repo.sh"
     ]
-    max_retries = 3
+    max_retries = 1
   }
 
   provisioner "shell" {

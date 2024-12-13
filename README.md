@@ -53,6 +53,19 @@ jobs:
 ```
 
 
+## HCP Packer integration
+- [What is HCP Packer?](https://developer.hashicorp.com/hcp/docs/packer)
+- [Setup / Requirements](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-artifact-metadata#create-hcp-packer-registry)
+
+You will need to add the following secrets to GitHub:
+- `HCP_ORGANIZATION_ID`
+- `HCP_PROJECT_ID`
+- `HCP_CLIENT_ID`
+- `HCP_CLIENT_SECRET`
+
+**NOTE**: You can track up to [10 buckets (images) for free](https://www.hashicorp.com/products/packer/pricing), but if you do not wish to, you can always comment out `hcp_packer_registry` block from the image build template file(s).
+
+
 ## Run Locally
 If you wish to run this locally without using GitHub Actions, you can do the following:
 
@@ -62,6 +75,8 @@ gcloud auth application-default login
 ```
 
 ```console
+packer init base_docker.pkr.hcl
+
 PKR_VAR_access_token='xxxxxxxxxxxxx' packer build -var 'project_id=myproject-123' -var-file=variables.pkrvars.hcl base_docker.pkr.hcl`
 ```
 

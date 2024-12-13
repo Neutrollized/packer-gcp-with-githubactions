@@ -45,6 +45,22 @@ source "googlecompute" "vault-base" {
 }
 
 build {
+  hcp_packer_registry {
+    bucket_name = "gcp-gce-images-vault-base"
+    description = "Base Debian image with Vault installed"
+
+    bucket_labels = {
+      "os"            = "Debian",
+      "os-version"    = "Bookworm 12",
+      "vault-version" = var.vault_version,
+    }
+
+    build_labels = {
+      "build-time"   = timestamp()
+      "build-source" = basename(path.cwd)
+    }
+  }
+
   sources = ["sources.googlecompute.vault-base"]
 
   # https://discuss.hashicorp.com/t/how-to-fix-debconf-unable-to-initialize-frontend-dialog-error/39201/2
@@ -68,8 +84,8 @@ build {
   provisioner "file" {
     source      = "vault/20_services_check.sh"
     destination = "/tmp/"
-    pause_before = "10s"
-    max_retries = 3
+    pause_before = "30s"
+    max_retries = 1
   }
 
   provisioner "shell" {
