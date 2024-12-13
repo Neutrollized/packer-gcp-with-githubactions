@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.0.0] - 2024-12-13
+### Added
+- [HCP Packer integration](https://github.com/Neutrollized/packer-gcp-with-githubactions/blob/main/README.md#hcp-packer-integration)!  Now image metadata is being sent and stored in HCP Packer.
+### Changed
+- Updated Packer version from `1.9.5` to `1.11.2`
+- Updated `source_image_family` from `debian-11` to `debian-12`
+- Increasing the `pause_before` time from `10s` to `30s` to ensure sufficient wait time after reboots
+- Updated Consul version from `1.19.2` to `1.20.1`
+- Updated Nomad version from `1.8.4` to `1.9.3`
+- Updated Vault version from `1.17.6` to `1.18.2`
+- fluentd [Logging agent](https://cloud.google.com/logging/docs/agent/logging) in the Nomad client image is considered legacy and has been replaced by Ops Agent
+### Removed
+- Packer variable, `google_fluentd_version`
+
 ## [0.11.2] - 2024-09-30
 ### Changed
 - Updated Consul version from `1.19.1` to `1.19.2`

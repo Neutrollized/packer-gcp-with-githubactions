@@ -6,7 +6,11 @@ on:
     paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*']
 
 env:
-  PRODUCT_VERSION: "1.9.5" # or: "latest"
+  PRODUCT_VERSION: "1.11.2" # or: "latest"
+  HCP_ORGANIZATION_ID: '${{ secrets.HCP_ORGANIZATION_ID }}'
+  HCP_PROJECT_ID: '${{ secrets.HCP_PROJECT_ID }}'
+  HCP_CLIENT_ID: '${{ secrets.HCP_CLIENT_ID }}'
+  HCP_CLIENT_SECRET: '${{ secrets.HCP_CLIENT_SECRET }}'
 
 
 jobs:

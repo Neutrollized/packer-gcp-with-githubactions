@@ -45,6 +45,22 @@ source "googlecompute" "consul-base" {
 }
 
 build {
+  hcp_packer_registry {
+    bucket_name = "gcp-gce-images-consul-base"
+    description = "Base Debian image with Consul installed"
+
+    bucket_labels = {
+      "os"             = "Debian",
+      "os-version"     = "Bookworm 12",
+      "consul-version" = var.consul_version,
+    }
+
+    build_labels = {
+      "build-time"   = timestamp()
+      "build-source" = basename(path.cwd)
+    }
+  }
+
   sources = ["sources.googlecompute.consul-base"]
 
   # https://discuss.hashicorp.com/t/how-to-fix-debconf-unable-to-initialize-frontend-dialog-error/39201/2
@@ -74,7 +90,8 @@ build {
       "cd dynmotd && sudo ./install.sh",
       "cd ~ && rm -Rf ./dynmotd/"
     ]
-    pause_before = "10s"
+    pause_before = "30s"
+    max_retries  = 1
   }
 
   provisioner "shell" {
