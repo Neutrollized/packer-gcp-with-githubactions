@@ -40,20 +40,20 @@ source "googlecompute" "base-docker" {
 }
 
 build {
-  hcp_packer_registry {
-    bucket_name = "gcp-gce-images-docker-base"
-    description = "Base Debian image with Docker-CE installed"
+  #hcp_packer_registry {
+    #bucket_name = "gcp-gce-images-docker-base"
+    #description = "Base Debian image with Docker-CE installed"
 
-    bucket_labels = {
-      "os"         = "Debian",
-      "os-version" = "Bookworm 12",
-    }
+    #bucket_labels = {
+    #  "os"         = "Debian",
+    #  "os-version" = "Bookworm 12",
+    #}
 
-    build_labels = {
-      "build-time"   = timestamp()
-      "build-source" = basename(path.cwd)
-    }
-  }
+    #build_labels = {
+    # "build-time"   = timestamp()
+    #  "build-source" = basename(path.cwd)
+    #}
+  #}
 
   sources = ["sources.googlecompute.base-docker"]
 

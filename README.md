@@ -63,7 +63,8 @@ You will need to add the following secrets to GitHub:
 - `HCP_CLIENT_ID`
 - `HCP_CLIENT_SECRET`
 
-**NOTE**: You can track up to [10 buckets (images) for free](https://www.hashicorp.com/products/packer/pricing), but if you do not wish to, you can always comment out `hcp_packer_registry` block from the image build template file(s).
+**NOTE**: You can track up to ~~[10 buckets (images) for free](https://www.hashicorp.com/products/packer/pricing)~~, but if you do not wish to, you can always comment out `hcp_packer_registry` block from the image build template file(s).
+**UPDATE**: As of [v1.1.0](https://github.com/Neutrollized/packer-gcp-with-githubactions/blob/main/CHANGELOG.md#110---2025-03-26), due to recent HCP Packer pricing changes, there's no longer a free tier and hence I've commented out `hcp_packer_registry` references as it's always been my goal to keep my repos/deployments as cost-effective as possible for learning.
 
 
 ## Run Locally

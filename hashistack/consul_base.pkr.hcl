@@ -45,21 +45,21 @@ source "googlecompute" "consul-base" {
 }
 
 build {
-  hcp_packer_registry {
-    bucket_name = "gcp-gce-images-consul-base"
-    description = "Base Debian image with Consul installed"
+  #hcp_packer_registry {
+    #bucket_name = "gcp-gce-images-consul-base"
+    #description = "Base Debian image with Consul installed"
 
-    bucket_labels = {
-      "os"             = "Debian",
-      "os-version"     = "Bookworm 12",
-      "consul-version" = var.consul_version,
-    }
+    #bucket_labels = {
+    #  "os"             = "Debian",
+    #  "os-version"     = "Bookworm 12",
+    #  "consul-version" = var.consul_version,
+    #}
 
-    build_labels = {
-      "build-time"   = timestamp()
-      "build-source" = basename(path.cwd)
-    }
-  }
+    #build_labels = {
+    #  "build-time"   = timestamp()
+    #  "build-source" = basename(path.cwd)
+    #}
+  #}
 
   sources = ["sources.googlecompute.consul-base"]
 

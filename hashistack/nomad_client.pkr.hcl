@@ -47,23 +47,23 @@ source "googlecompute" "nomad-client" {
 }
 
 build {
-  hcp_packer_registry {
-    bucket_name = "gcp-gce-images-nomad-client"
-    description = "Base Debian (w/Docker) image with Nomad (client config), Consul, and Java installed"
+  #hcp_packer_registry {
+    #bucket_name = "gcp-gce-images-nomad-client"
+    #description = "Base Debian (w/Docker) image with Nomad (client config), Consul, and Java installed"
 
-    bucket_labels = {
-      "os"             = "Debian",
-      "os-version"     = "Bookworm 12",
-      "consul-version" = var.consul_version,
-      "nomad-version"  = var.nomad_version,
-      "java-package"   = var.java_package,
-    }
+    #bucket_labels = {
+    #  "os"             = "Debian",
+    #  "os-version"     = "Bookworm 12",
+    #  "consul-version" = var.consul_version,
+    #  "nomad-version"  = var.nomad_version,
+    #  "java-package"   = var.java_package,
+    #}
 
-    build_labels = {
-      "build-time"   = timestamp()
-      "build-source" = basename(path.cwd)
-    }
-  }
+    #build_labels = {
+    #  "build-time"   = timestamp()
+    #  "build-source" = basename(path.cwd)
+    #}
+  #}
 
   sources = ["sources.googlecompute.nomad-client"]
 

@@ -45,21 +45,21 @@ source "googlecompute" "nomad-server" {
 }
 
 build {
-  hcp_packer_registry {
-    bucket_name = "gcp-gce-images-nomad-server"
-    description = "Base Consul image with Nomad (server config) installed"
+  #hcp_packer_registry {
+    #bucket_name = "gcp-gce-images-nomad-server"
+    #description = "Base Consul image with Nomad (server config) installed"
 
-    bucket_labels = {
-      "os"            = "Debian",
-      "os-version"    = "Bookworm 12",
-      "nomad-version" = var.nomad_version,
-    }
+    #bucket_labels = {
+    #  "os"            = "Debian",
+    #  "os-version"    = "Bookworm 12",
+    #  "nomad-version" = var.nomad_version,
+    #}
 
-    build_labels = {
-      "build-time"   = timestamp()
-      "build-source" = basename(path.cwd)
-    }
-  }
+    #build_labels = {
+    #  "build-time"   = timestamp()
+    #  "build-source" = basename(path.cwd)
+    #}
+  #}
 
   sources = ["sources.googlecompute.nomad-server"]
 

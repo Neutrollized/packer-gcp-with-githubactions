@@ -45,21 +45,21 @@ source "googlecompute" "vault-base" {
 }
 
 build {
-  hcp_packer_registry {
-    bucket_name = "gcp-gce-images-vault-base"
-    description = "Base Debian image with Vault installed"
+  #hcp_packer_registry {
+    #bucket_name = "gcp-gce-images-vault-base"
+    #description = "Base Debian image with Vault installed"
 
-    bucket_labels = {
-      "os"            = "Debian",
-      "os-version"    = "Bookworm 12",
-      "vault-version" = var.vault_version,
-    }
+    #bucket_labels = {
+    #  "os"            = "Debian",
+    #  "os-version"    = "Bookworm 12",
+    #  "vault-version" = var.vault_version,
+    #}
 
-    build_labels = {
-      "build-time"   = timestamp()
-      "build-source" = basename(path.cwd)
-    }
-  }
+    #build_labels = {
+    #  "build-time"   = timestamp()
+    #  "build-source" = basename(path.cwd)
+    #}
+  #}
 
   sources = ["sources.googlecompute.vault-base"]
 

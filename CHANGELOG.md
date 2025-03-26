@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.1.0] - 2025-03-26
+### Added
+- Consul backend storage config example to `vault_server.hcl.sample`
+### Changed
+- Commented out any HCP Packer reference code blocks due to the recent pricing changes and removal of the free tier
+- Updated Consul version from `1.20.1` to `1.20.5`
+- Updated Nomad version from `1.9.3` to `1.9.7`
+- Updated Vault version from `1.18.2` to `1.19.0`
+
 ## [1.0.0] - 2024-12-13
 ### Added
 - [HCP Packer integration](https://github.com/Neutrollized/packer-gcp-with-githubactions/blob/main/README.md#hcp-packer-integration)!  Now image metadata is being sent and stored in HCP Packer.
