@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Packer variable `machine_type` (default: `n2-standard-4`)
 - Using preemptible VM instance (`preemptible = true`)
 - GCP firewall rule for to allow IAP tunneling
+- Added `roles/iap.tunnelResourceAccessor` role to Packer service account IAM roles list
 ### Changed
 - Updated Consul version from `1.20.5` to `1.21.0`
 - Updated Nomad version from `1.9.7` to `1.10.0`
