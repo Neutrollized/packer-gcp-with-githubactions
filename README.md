@@ -22,7 +22,7 @@ Terraform code for setting up required GCP service accounts and WIF can be found
 You will need to update the `WIF_PROVIDER` and `WIF_SERVICE_ACCOUNT` env vars in the [packer.yaml](.github/workflow/packer.yaml) accordingly for your GCP project and WIF Pool configuration
 
 #### NOTE - You can get the `WIF_PROVIDER` with the following `gcloud` command (provider ID = *github* in my example): 
-```console
+```sh
 gcloud iam workload-identity-pools providers describe ${WIF_PROVIDER_ID} \
     --location global \
     --workload-identity-pool ${WIF_POOL_ID} \
@@ -38,7 +38,7 @@ Check the **Actions** tab and watch it go
 
 #### NOTE - Using Credentials JSON
 While not the recommended method of authenticating to Google Cloud, you can generate a credentials JSON key file and paste its contents into a GitHub repo secret:
-```
+```console
 jobs:
     [...]
 
@@ -74,11 +74,11 @@ You will need to add the following secrets to GitHub:
 If you wish to run this locally without using GitHub Actions, you can do the following:
 
 - authenticate using user application default creds
-```console
+```sh
 gcloud auth application-default login
 ```
 
-```console
+```sh
 packer init base_docker.pkr.hcl
 
 PKR_VAR_access_token='xxxxxxxxxxxxx' packer build -var 'project_id=myproject-123' -var-file=variables.pkrvars.hcl base_docker.pkr.hcl`
