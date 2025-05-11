@@ -38,7 +38,7 @@ Check the **Actions** tab and watch it go
 
 #### NOTE - Using Credentials JSON
 While not the recommended method of authenticating to Google Cloud, you can generate a credentials JSON key file and paste its contents into a GitHub repo secret:
-```console
+```
 jobs:
     [...]
 
