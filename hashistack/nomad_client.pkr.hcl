@@ -12,6 +12,7 @@ packer {
 variable "project_id" {}
 variable "zone" {}
 variable "arch" {}
+variable "machine_type" {}
 variable "source_image_family" {}
 variable "image_family" {}
 variable "consul_version" {}
@@ -32,9 +33,8 @@ locals {
 source "googlecompute" "nomad-client" {
   project_id   = var.project_id
   zone         = var.zone
-  machine_type = "n1-standard-2"
-  ssh_username = "packer"
-  use_os_login = "false"
+  machine_type = var.machine_type
+  preemptible  = true
 
   # use custom base image that was built
   source_image_family = var.source_image_family
@@ -42,6 +42,10 @@ source "googlecompute" "nomad-client" {
   image_family      = var.image_family
   image_name        = "nomad-${local.image_nomad_version}-${var.arch}-client-${local.datestamp}"
   image_description = "Nomad client image"
+
+  ssh_username = "packer"
+  use_os_login = false
+  use_iap      = true
 
   tags = ["packer"]
 }

@@ -2,7 +2,7 @@ name: Packer Build
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
     paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*']
 
 env:
@@ -37,6 +37,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -75,6 +81,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -113,6 +125,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -152,6 +170,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -191,6 +215,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
@@ -230,6 +260,12 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: 'Set up Google Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: 'latest'
+          project_id: '${{ vars.GCP_PROJECT_ID }}'
+          #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main

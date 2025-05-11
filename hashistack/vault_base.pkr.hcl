@@ -12,6 +12,7 @@ packer {
 variable "project_id" {}
 variable "zone" {}
 variable "arch" {}
+variable "machine_type" {}
 variable "source_image_family" {}
 variable "image_family" {}
 variable "vault_version" {}
@@ -30,9 +31,8 @@ locals {
 source "googlecompute" "vault-base" {
   project_id   = var.project_id
   zone         = var.zone
-  machine_type = "n1-standard-2"
-  ssh_username = "packer"
-  use_os_login = "false"
+  machine_type = var.machine_type
+  preemptible  = true
 
   # use custom base image that was built
   source_image_family = var.source_image_family
@@ -40,6 +40,10 @@ source "googlecompute" "vault-base" {
   image_family      = var.image_family
   image_name        = "vault-${local.image_vault_version}-${var.arch}-base-${local.datestamp}"
   image_description = "Vault base image"
+
+  ssh_username = "packer"
+  use_os_login = false
+  use_iap      = true
 
   tags = ["packer"]
 }

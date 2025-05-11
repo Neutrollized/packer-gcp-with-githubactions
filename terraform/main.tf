@@ -6,6 +6,11 @@ data "google_project" "main" {
   project_id = var.project_id
 }
 
+data "google_netblock_ip_ranges" "iap-forwarders" {
+  range_type = "iap-forwarders"
+}
+
+
 resource "google_compute_firewall" "rules" {
   project     = var.project_id
   name        = "allow-packer-ssh"
@@ -19,6 +24,21 @@ resource "google_compute_firewall" "rules" {
 
   source_ranges           = ["0.0.0.0/0"]
   target_service_accounts = ["${data.google_project.main.number}-compute@developer.gserviceaccount.com"]
+}
+
+resource "google_compute_firewall" "iap_tcp_forwarding" {
+  project = var.project_id
+  name    = "allow-iap-tunneling"
+  network = "default"
+
+  direction = "INGRESS"
+
+  allow {
+    protocol = "tcp"
+  }
+
+  # https://cloud.google.com/iap/docs/using-tcp-forwarding
+  source_ranges = data.google_netblock_ip_ranges.iap-forwarders.cidr_blocks_ipv4
 }
 
 

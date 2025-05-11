@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.2.0] - 2025-05-11
+### Added
+- `dev` branch to GHA trigger
+- Set up Google Cloud SDK (`google-github-actions/setup-gcloud@v2`) step to the GHA job steps
+- Using IAP to connect to the VM to build, which requires Google Cloud SDK (`use_iap = true`)
+- Packer variable `machine_type` (default: `n2-standard-4`)
+- Using preemptible VM instance (`preemptible = true`)
+- GCP firewall rule for to allow IAP tunneling
+### Changed
+- Updated Consul version from `1.20.5` to `1.21.0`
+- Updated Nomad version from `1.9.7` to `1.10.0`
+- Updated Vault version from `1.19.0` to `1.19.3`
+
 ## [1.1.0] - 2025-03-26
 ### Added
 - Consul backend storage config example to `vault_server.hcl.sample`

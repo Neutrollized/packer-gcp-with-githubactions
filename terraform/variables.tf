@@ -27,6 +27,7 @@ variable "packer_sa_iam_roles_list" {
   default = [
     "roles/compute.instanceAdmin.v1",
     "roles/iam.serviceAccountUser",
+    "roles/iap.tunnelResourceAccessor",
   ]
 }
 
