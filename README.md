@@ -7,6 +7,8 @@
 
 [Medium: Getting started with HashiCorp Packer on Google Cloud Platform](https://medium.com/@glen.yu/getting-started-with-hashicorp-packer-on-google-cloud-platform-a36bfeffbfa9)
 
+I'm also using larger machine types (i.e. *n2-standard-4*), but with [preemptible VM instances](https://cloud.google.com/compute/docs/instances/preemptible) which should both speed up the build process and reduce overall cost.
+
 ## Setup
 
 ### 0 - Fork this repo
@@ -45,7 +47,7 @@ jobs:
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v1'
+        uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS_JSON }}'
 

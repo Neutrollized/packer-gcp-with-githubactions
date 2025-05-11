@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.2.0] - 2025-??-??
 ### Added
 - `dev` branch to GHA trigger
-- `Set up Google Cloud SDK` step to the GHA job steps
-- using IAP to connect to the VM to build (which requires Google Cloud SDK)
-- `use_iap` = true
-- `preemptible` = true
+- Set up Google Cloud SDK (`google-github-actions/setup-gcloud@v2`) step to the GHA job steps
+- Using IAP to connect to the VM to build, which requires Google Cloud SDK (`use_iap = true`)
+- Packer variable `machine_type` (default: `n2-standard-4`)
+- Using preemptible VM instance (`preemptible = true`)
 ### Changed
 - Updated Consul version from `1.20.5` to `1.21.0`
 - Updated Nomad version from `1.9.7` to `1.10.0`
