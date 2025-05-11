@@ -12,6 +12,7 @@ packer {
 variable "project_id" {}
 variable "zone" {}
 variable "arch" {}
+variable "machine_type" {}
 variable "source_image_family" {}
 variable "image_family" {}
 
@@ -25,15 +26,16 @@ locals {
 source "googlecompute" "base-docker" {
   project_id   = var.project_id
   zone         = var.zone
-  machine_type = "n1-standard-2"
+  machine_type = var.machine_type
   preemptible  = true
 
   # gcloud compute images list
   source_image_family = var.source_image_family
 
-  image_family      = var.image_family
-  image_name        = "docker-${var.arch}-base-${local.datestamp}"
-  image_description = "Debian 12 image with Docker-CE installed"
+  image_family       = var.image_family
+  image_architecture = upper(var.arch)  # expected to be uppercase 
+  image_name         = "docker-${var.arch}-base-${local.datestamp}"
+  image_description  = "Debian 12 image with Docker-CE installed"
   
   ssh_username = "packer"
   use_os_login = false
