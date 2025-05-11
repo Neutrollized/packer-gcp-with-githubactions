@@ -32,10 +32,9 @@ source "googlecompute" "base-docker" {
   # gcloud compute images list
   source_image_family = var.source_image_family
 
-  image_family       = var.image_family
-  image_architecture = upper(var.arch)  # expected to be uppercase 
-  image_name         = "docker-${var.arch}-base-${local.datestamp}"
-  image_description  = "Debian 12 image with Docker-CE installed"
+  image_family      = var.image_family
+  image_name        = "docker-${var.arch}-base-${local.datestamp}"
+  image_description = "Debian 12 image with Docker-CE installed"
   
   ssh_username = "packer"
   use_os_login = false
