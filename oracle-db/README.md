@@ -5,9 +5,15 @@ I needed to setup an Oracle database to test/play around with some new tools and
 
 
 ## Setting up Oracle
+You need to configure your database first:
 ```
 sudo /etc/init.d/oracle-xe-21c configure
 ```
+You'll have to set a password and it will create an initial Pluggable DB (PDB) called `XEPDB1` that you can connect to.   
+
+
+### Configuring the Listener
+In `${ORACLE_HOME}/network/admin`, you need to add a `listener.ora` file and restart the Oracle DB (`sudo /etc/init.d/oracle-xe-21c restart`)
 
 - sample `listener.ora`:
 ```
@@ -24,7 +30,6 @@ SID_LIST_LISTENER=
     )
   )
 ```
-
 
 
 ## Connecting from Client
