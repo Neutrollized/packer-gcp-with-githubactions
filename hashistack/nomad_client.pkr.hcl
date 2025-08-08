@@ -246,6 +246,7 @@ build {
       "consul --version",
       "which nomad",
       "nomad --version",
+      "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

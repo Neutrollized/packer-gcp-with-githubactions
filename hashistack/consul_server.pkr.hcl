@@ -93,6 +93,7 @@ build {
     inline = [
       "which consul",
       "consul --version",
+      "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

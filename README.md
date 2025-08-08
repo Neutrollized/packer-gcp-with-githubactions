@@ -9,6 +9,8 @@
 
 I'm also using larger machine types (i.e. *n2-standard-4*), but with [preemptible VM instances](https://cloud.google.com/compute/docs/instances/preemptible) which should both speed up the build process and reduce overall cost.
 
+**NOTE**: there are other non-HashiCorp stack images, but they will not be included in the GitHub Actions to automatically build images
+
 ## Setup
 
 ### 0 - Fork this repo

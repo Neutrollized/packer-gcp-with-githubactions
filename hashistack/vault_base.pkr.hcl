@@ -170,6 +170,7 @@ build {
       "which vault",
       "vault --version",
       "sudo apt-get clean",
+      "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
       "echo '=============================================='"

@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.3.0] - 2025-08-08
+### Added
+- Added `oracle-db/base_ol.pkr.hcl` which builds base Oracle Linux 8 image
+- Added `oracle-db/oracle_server.pkr.hcl` which builds Oracle XE 21c server on top of the custom base OL8 image
+- Added `oracle-db/oracle_ora2pg_client.pkr.hcl` which builds Oracle SQL*Plus client and [ora2pg](https://ora2pg.darold.net/) on top of the custom base OL8 image
+- Added `oracle-db/*` to `paths-ignore` in GitHub Actions `packer.yaml`
+### Changed
+- Updated Consul version from `1.21.0` to `1.21.3`
+- Updated Nomad version from `1.10.0` to `1.10.3`
+- Updated Vault version from `1.19.3` to `1.20.2`
+
 ## [1.2.0] - 2025-05-11
 ### Added
 - `dev` branch to GHA trigger
