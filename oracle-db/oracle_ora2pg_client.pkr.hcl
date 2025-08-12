@@ -54,6 +54,7 @@ build {
       "echo '=============================================='",
       "sudo dnf install -y oracle-instantclient-release-el8",
       "sudo dnf install -y oracle-instantclient-sqlplus oracle-instantclient-tools",
+      "echo 'export ORACLE_HOME=/usr/lib/oracle/21/client64' | sudo tee -a /etc/profile",
       "echo 'export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib' | sudo tee -a /etc/profile"
     ]
   }
@@ -64,7 +65,7 @@ build {
       "echo 'INSTALL ORA2PG'",
       "echo '=============================================='",
       "sudo dnf install -y perl-CPAN perl-DBI perl-DBD-Pg perl-Time-HiRes perl-Compress-Raw-Zlib oracle-instantclient-devel libnsl libaio",
-      "sudo cpan -i DBD::Oracle",
+      "sudo ORACLE_HOME=/usr/lib/oracle/21/client64 LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib cpan -i DBD::Oracle",
       "cd /usr/local/bin",
       "sudo wget -q https://github.com/darold/ora2pg/archive/refs/tags/v${var.ora2pg_version}.tar.gz",
       "sudo tar zxf v${var.ora2pg_version}.tar.gz",
@@ -79,9 +80,9 @@ build {
   provisioner "shell" {
     expect_disconnect = "true"
     inline = [
+      "sudo dnf clean all",
       "sqlplus -V",
       "ora2pg -v",
-      "sudo dnf clean all",
       "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",
