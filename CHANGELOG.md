@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `base-python3/base_python312_bookworm.pkr.hcl` which builds base Debian 12 (Bookworm) image with [Python 3.12 backport](https://github.com/pascallj/python3.12-backport)
 - Install of `cloud-sql-proxy` binary in the Oracle DB client image because...why not?
 ### Changed
+- Added `base-python3/*` to `paths-ignore` in GitHub Actions `packer.yaml`
 - Added `sudo apt autoremove -y` to the end of base (Debian-based) image builds
 - Updated Consul version from `1.21.3` to `1.21.4`
 - Updated Nomad version from `1.10.3` to `1.10.4`
@@ -25,8 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `oracle-db/base_ol.pkr.hcl` which builds base Oracle Linux 8 image
 - Added `oracle-db/oracle_server.pkr.hcl` which builds Oracle XE 21c server on top of the custom base OL8 image
 - Added `oracle-db/oracle_ora2pg_client.pkr.hcl` which builds Oracle SQL*Plus client and [ora2pg](https://ora2pg.darold.net/) on top of the custom base OL8 image
-- Added `oracle-db/*` to `paths-ignore` in GitHub Actions `packer.yaml`
 ### Changed
+- Added `oracle-db/*` to `paths-ignore` in GitHub Actions `packer.yaml`
 - Updated Consul version from `1.21.0` to `1.21.3`
 - Updated Nomad version from `1.10.0` to `1.10.3`
 - Updated Vault version from `1.19.3` to `1.20.2`

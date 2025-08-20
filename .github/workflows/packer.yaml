@@ -3,7 +3,7 @@ name: Packer Build
 on:
   push:
     branches: [main, dev]
-    paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*', 'oracle-db/*']
+    paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*', 'oracle-db/*', 'base-python3/*']
 
 env:
   PRODUCT_VERSION: "1.11.2" # or: "latest"
