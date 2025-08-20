@@ -16,6 +16,7 @@ variable "machine_type" {}
 variable "source_image_family" {}
 variable "image_family" {}
 variable "ora2pg_version" {}
+variable "cloudsqlproxy_version" {}
 
 
 locals {
@@ -77,12 +78,25 @@ build {
     ]
   }
 
+  # https://cloud.google.com/sql/docs/mysql/connect-auth-proxy#install
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'INSTALL CLOUD SQL AUTH PROXY'",
+      "echo '=============================================='",
+      "curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v${var.cloudsqlproxy_version}/cloud-sql-proxy.linux.amd64",
+      "chmod +x cloud-sql-proxy",
+      "sudo mv cloud-sql-proxy /usr/local/bin/cloud-sql-proxy"
+    ]
+  }
+
   provisioner "shell" {
     expect_disconnect = "true"
     inline = [
       "sudo dnf clean all",
       "sqlplus -V",
       "ora2pg -v",
+      "cloud-sql-proxy -v",
       "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",

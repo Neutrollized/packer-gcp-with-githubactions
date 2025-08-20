@@ -1,0 +1,5 @@
+Types: deb
+URIs: http://deb.pascalroeleven.nl/python3.12
+Suites: bookworm-backports
+Components: main
+Signed-By: /etc/apt/keyrings/deb-pascalroeleven.gpg
