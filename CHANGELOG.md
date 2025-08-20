@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.4.0] - 2025-08-20
 ### Added
-- Added `base-python3/base_python312_bookworm.pkr.hcl` which builds base Debian 12 (Bookworm) image with Python 3.12 backport
+- Added `base-python3/base_python312_bookworm.pkr.hcl` which builds base Debian 12 (Bookworm) image with [Python 3.12 backport](https://github.com/pascallj/python3.12-backport)
 - Install of `cloud-sql-proxy` binary in the Oracle DB client image because...why not?
 ### Changed
 - Added `sudo apt autoremove -y` to the end of base (Debian-based) image builds
