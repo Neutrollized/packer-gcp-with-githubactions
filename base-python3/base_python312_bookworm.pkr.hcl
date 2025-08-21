@@ -15,6 +15,7 @@ variable "arch" {}
 variable "machine_type" {}
 variable "source_image_family" {}
 variable "image_family" {}
+variable "cloudsqlproxy_version" {}
 
 
 locals {
@@ -59,6 +60,7 @@ build {
       "sudo apt-get -y upgrade",
       "sudo apt-get -y dist-upgrade",
       "sudo apt-get -y autoremove",
+      "echo 'export TERM=xterm-256color' | sudo tee -a /etc/profile",
       "echo 'Rebooting...'",
       "sudo reboot"
     ]
@@ -114,12 +116,39 @@ build {
     max_retries  = 3
   }
 
+  # https://cloud.google.com/sql/docs/mysql/connect-auth-proxy#install
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'INSTALL CLOUD SQL AUTH PROXY'",
+      "echo '=============================================='",
+      "curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v${var.cloudsqlproxy_version}/cloud-sql-proxy.linux.amd64",
+      "chmod +x cloud-sql-proxy",
+      "sudo mv cloud-sql-proxy /usr/local/bin/cloud-sql-proxy"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo '=============================================='",
+      "echo 'INSTALL GEMINI-CLI'",
+      "echo '=============================================='",
+      "curl -sL https://deb.nodesource.com/setup_24.x | sudo bash -",
+      "sudo apt-get update",
+      "sudo apt-get install -y nodejs",
+      "sudo npm install -g @google/gemini-cli"
+    ]
+  }
+
   provisioner "shell" {
     expect_disconnect = "true"
     inline = [
       "sudo apt autoremove -y",
       "sudo apt-get clean",
+      "sudo npm cache clean --force",
       "python --version",
+      "cloud-sql-proxy --version",
+      "gemini --version",
       "/usr/local/bin/dynmotd",
       "echo '=============================================='",
       "echo 'BUILD COMPLETE'",

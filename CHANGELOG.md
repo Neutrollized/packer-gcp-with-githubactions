@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.4.1] - 2025-08-21
+### Added
+- Set `TERM='xterm-256color'` in `/etc/profile` of Python 3.12 Bookworm base image
+- Install of `cloud-sql-proxy` binary to the Python 3.12 Bookworm base image
+- Install of `gemini` CLI binary to the Python 3.12 Bookworm base image
+
 ## [1.4.0] - 2025-08-20
 ### Added
 - Added `base-python3/base_python312_bookworm.pkr.hcl` which builds base Debian 12 (Bookworm) image with [Python 3.12 backport](https://github.com/pascallj/python3.12-backport)
