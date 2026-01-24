@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.4.2] - 2026-01-23
+### Changed
+- Updated Consul version from `1.21.4` to `1.22.3`
+- Updated Nomad version from `1.10.4` to `1.11.1`
+- Updated Vault version from `1.20.2` to `1.21.1`
+
 ## [1.4.1] - 2025-08-21
 ### Added
 - Set `TERM='xterm-256color'` in `/etc/profile` of Python 3.12 Bookworm base image
