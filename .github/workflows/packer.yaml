@@ -6,7 +6,7 @@ on:
     paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*', 'oracle-db/*', 'base-python3/*']
 
 env:
-  PRODUCT_VERSION: "1.11.2" # or: "latest"
+  PRODUCT_VERSION: "1.14.3" # or: "latest"
   #HCP_ORGANIZATION_ID: '${{ secrets.HCP_ORGANIZATION_ID }}'
   #HCP_PROJECT_ID: '${{ secrets.HCP_PROJECT_ID }}'
   #HCP_CLIENT_ID: '${{ secrets.HCP_CLIENT_ID }}'
@@ -29,23 +29,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -73,23 +73,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -117,23 +117,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -162,23 +162,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -207,23 +207,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -252,23 +252,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
       - name: 'Set up Google Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: 'google-github-actions/setup-gcloud@v3'
         with:
           version: 'latest'
           project_id: '${{ vars.GCP_PROJECT_ID }}'
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
