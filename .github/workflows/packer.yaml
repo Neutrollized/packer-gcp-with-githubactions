@@ -3,7 +3,7 @@ name: Packer Build
 on:
   push:
     branches: [main, dev]
-    paths-ignore: ['**/README.md','**/CHANGELOG.md', 'terraform/*', 'oracle-db/*', 'base-python3/*']
+    paths-ignore: ['**/README.md', '**/CHANGELOG.md', '**/.gitignore', 'terraform/*', 'oracle-db/*', 'base-python3/*']
 
 env:
   PRODUCT_VERSION: "1.14.3" # or: "latest"
@@ -45,7 +45,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -89,7 +89,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -133,7 +133,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -178,7 +178,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -223,7 +223,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
@@ -268,7 +268,7 @@ jobs:
           #install_components: 'beta'  # optional: install additional components
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@v3
+        uses: hashicorp/setup-packer@v3.3.0
         id: setup
         with:
           version: ${{ env.PRODUCT_VERSION }}
