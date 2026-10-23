@@ -9,7 +9,10 @@
 
 I'm also using larger machine types (i.e. *n2-standard-4*), but with [preemptible VM instances](https://cloud.google.com/compute/docs/instances/preemptible) which should both speed up the build process and reduce overall cost.
 
-**NOTE**: there are other non-HashiCorp stack images, but they will not be included in the GitHub Actions to automatically build images
+> [!NOTE]
+> There are other non-HashiCorp stack images,
+> but they will not be included in the GitHub Actions to automatically build images
+
 
 ## Setup
 
@@ -31,7 +34,8 @@ gcloud iam workload-identity-pools providers describe ${WIF_PROVIDER_ID} \
     --format='get(name)'
 ```
 
-#### NOTE - I used GitHub's CLI tool, [`gh`](https://github.com/cli/cli) to [set secrets](https://cli.github.com/manual/gh_secret_set) via command line
+> [!TIP]
+> I used GitHub's CLI tool, [`gh`](https://github.com/cli/cli) to [set secrets](https://cli.github.com/manual/gh_secret_set) via command line
 
 
 ### 3 - Push your commit!
@@ -85,7 +89,7 @@ packer init base_docker.pkr.hcl
 
 PKR_VAR_access_token='xxxxxxxxxxxxx' packer build -var 'project_id=myproject-123' -var-file=variables.pkrvars.hcl base_docker.pkr.hcl`
 ```
-**NOTE**: obtain access_token with `gcloud auth print-access-token`
+
 
 ### TL;DR
 ```sh
