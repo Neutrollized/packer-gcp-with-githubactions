@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.0.0] - 2026-??-??
 ### Changed
 - Updating all HashiCorp tool binaries to v2.x
-- Updated Consul version from `1.22.7` to `2.0.2`
-- Updated Nomad version from `1.11.3` to `2.0.4`
-- Updated Vault version from `1.21.4` to `2.0.3`
+- Updated Consul version from `1.22.7` to `2.0.4`
+- Updated Nomad version from `1.11.3` to `2.0.7`
+- Updated Vault version from `1.21.4` to `2.0.4`
 
 ## [1.5.0] - 2026-06-03
 ### Changed
